@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUXMY – A little reminder. A lot of care.</title>
+  <meta name="description" content="LUXMY is an experimental multilingual, voice-powered medication reminder prototype for older adults.">
+  <meta name="theme-color" content="#f7f3e8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1 class="brand-name">LUXMY</h1>
+        <p class="tagline">A little reminder. A lot of care.</p>
+      </div>
+      <div class="clock-card" aria-label="Current time and date">
+        <p class="clock-time" id="clock-time">--:--</p>
+        <p class="clock-date" id="clock-date"></p>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+
+    <section class="notice" aria-labelledby="notice-title">
+      <h2 id="notice-title">Please read: prototype notice</h2>
+      <p>
+        LUXMY is an experimental student prototype. It is <strong>not a medical device</strong>.
+        Please <strong>do not rely on it for real medication reminders</strong>.
+        All medicines shown here are fictional demonstrations, and LUXMY does not give medical advice.
+        For any question about your medicines, please ask a doctor or pharmacist.
+      </p>
+      <p>
+        Reminders can only sound while this page is open and active in your browser.
+        They will not work if the browser is closed, the tab is asleep, or the phone is locked.
+      </p>
+    </section>
+
+    <section class="card summary-card" aria-labelledby="next-title">
+      <h2 id="next-title">Next reminder</h2>
+      <p class="big-text" id="next-summary">Loading…</p>
+      <div class="voice-row">
+        <button type="button" class="btn btn-secondary" id="enable-voice" aria-pressed="false">Turn on voice reminders</button>
+        <p class="voice-status" id="voice-status" role="status"></p>
+      </div>
+      <p class="hint">
+        Browsers only allow spoken reminders after you tap a button on the page.
+        You may need to tap "Turn on voice reminders" each time you open LUXMY.
+      </p>
+    </section>
+
+    <!-- Reminders waiting for confirmation appear here -->
+    <div id="alerts" aria-live="assertive"></div>
+
+    <div class="grid">
+
+      <section class="card" aria-labelledby="add-title">
+        <h2 id="add-title">Add a reminder</h2>
+        <form id="reminder-form" novalidate>
+          <div class="field">
+            <label for="med-name">Medication name</label>
+            <input type="text" id="med-name" name="med-name" maxlength="40" autocomplete="off" placeholder="e.g. Calmora (demo)" required>
+            <p class="hint">Please use fictional names only.</p>
+          </div>
+
+          <div class="field">
+            <label for="med-time">Reminder time</label>
+            <input type="time" id="med-time" name="med-time" required>
+          </div>
+
+          <div class="field">
+            <label for="med-lang">Reminder language</label>
+            <select id="med-lang" name="med-lang">
+              <option value="en">English</option>
+              <option value="ta">தமிழ் (Tamil)</option>
+            </select>
+          </div>
+
+          <div class="button-row">
+            <button type="submit" class="btn btn-primary">Add reminder</button>
+            <button type="button" class="btn btn-secondary" id="test-voice">Test voice</button>
+          </div>
+          <p class="form-message" id="form-message" role="status"></p>
+        </form>
+      </section>
+
+      <section class="card" aria-labelledby="list-title">
+        <h2 id="list-title">Today's reminders</h2>
+        <p class="empty-state" id="empty-state" hidden>No reminders yet. Add one, or load the demo schedule below.</p>
+        <ul class="reminder-list" id="reminder-list"></ul>
+
+        <div class="button-row list-tools">
+          <button type="button" class="btn btn-secondary" id="demo-btn">Load demo schedule</button>
+          <button type="button" class="btn btn-ghost" id="clear-btn">Clear all</button>
+        </div>
+        <p class="hint">The demo schedule adds three fictional reminders. Two of them will sound within the next two minutes.</p>
+        <p class="hint" id="storage-note"></p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>LUXMY was inspired by my grandmother, Vijayaluxmy. Experimental prototype. Not for real medical use.</p>
+    </div>
+  </footer>
+
+  <p class="sr-only" id="sr-status" role="status" aria-live="polite"></p>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
